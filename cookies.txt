@@ -1,0 +1,8 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+betashop-theme.mysapo.net	TRUE	/	FALSE	1999999999	_landing_page	%2Frobots.txt
+betashop-theme.mysapo.net	TRUE	/	FALSE	1999999999	cart	0006bf1bc2e889e85965bf27d8acb763
+betashop-theme.mysapo.net	TRUE	/	FALSE	1999999999	cart_sig	267a7bce91716083112f1dbb87c8602d
+betashop-theme.mysapo.net	TRUE	/	FALSE	1999999999	cart_currency	VND
+betashop-theme.mysapo.net	TRUE	/	FALSE	1999999999	samesite	none
+
