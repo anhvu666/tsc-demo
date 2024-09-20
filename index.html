@@ -3,10 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script type="text/javascript" src="assets/js/index.js" defer></script>
+    <title>Fake Store - Pagination</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      .products-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .product {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .product img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      .product-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .product-price {
+        color: #ff6200;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .loading {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .pagination {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .pagination button {
+        padding: 10px 15px;
+        margin: 0 5px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .pagination button:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+    </style>
   </head>
   <body>
-    tesst
+    <h1>Fake Store Products</h1>
+    <div class="loading" id="loading">Loading products...</div>
+    <div class="products-container" id="products"></div>
+
+    <div class="pagination">
+      <button id="prev-btn" disabled>Previous</button>
+      <button id="next-btn">Next</button>
+    </div>
+
+    <script>
+      const productsContainer = document.getElementById("products");
+      const loading = document.getElementById("loading");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+
+      let currentPage = 1;
+      const productsPerPage = 10; // Hiển thị 10 sản phẩm mỗi trang
+
+      // Fetch products with pagination
+      function fetchProducts(page) {
+        loading.style.display = "block"; // Hiển thị loading
+        productsContainer.innerHTML = ""; // Xóa sản phẩm cũ
+        fetch("https://fakestoreapi.com/products")
+          .then((response) => response.json())
+          .then((products) => {
+            loading.style.display = "none"; // Ẩn loading
+
+            // Tính toán phần sản phẩm hiển thị
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = page * productsPerPage;
+            const paginatedProducts = products.slice(startIndex, endIndex);
+
+            // Hiển thị sản phẩm trong phạm vi đã tính toán
+            paginatedProducts.forEach((product) => {
+              const productCard = document.createElement("div");
+              productCard.classList.add("product");
+
+              const img = document.createElement("img");
+              img.src = product.image;
+              img.alt = product.title;
+              productCard.appendChild(img);
+
+              const title = document.createElement("div");
+              title.classList.add("product-title");
+              title.textContent = product.title;
+              productCard.appendChild(title);
+
+              const price = document.createElement("div");
+              price.classList.add("product-price");
+              price.textContent = `$${product.price}`;
+              productCard.appendChild(price);
+
+              productsContainer.appendChild(productCard);
+            });
+
+            // Quản lý nút phân trang
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = endIndex >= products.length;
+          })
+          .catch((error) => {
+            console.error("Error fetching products:", error);
+          });
+      }
+
+      // Event listeners cho nút Previous và Next
+      prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          fetchProducts(currentPage);
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentPage++;
+        fetchProducts(currentPage);
+      });
+
+      // Fetch trang đầu tiên khi tải trang
+      fetchProducts(currentPage);
+    </script>
   </body>
 </html>
