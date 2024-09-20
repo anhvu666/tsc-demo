@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const listContainer = document.getElementById("list-section-product");
       data.forEach((product) => {
         const markup = `
-            <div class="col-12 col-md-4 item swiper-slide">
+            <div class="col-12 col-md-4 item">
             <div class="item_product_main">
               <div class="variants wishItem">
                 <div class="product-thumbnail">
