@@ -1,0 +1,7 @@
+.dashboard-total {
+  height: 200px;
+  cursor: pointer;
+}
+.dashboard-total:hover {
+  opacity: 0.8;
+}
