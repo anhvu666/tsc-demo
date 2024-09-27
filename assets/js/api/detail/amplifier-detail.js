@@ -32,70 +32,47 @@ document.addEventListener("DOMContentLoaded", function () {
               class="img-responsive mx-auto d-block"
             />
             `;
-          catalogueProduct.innerHTML = `
-              <div class="row mt-3">
-                  <div class="col-12 col-md-4">
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">stereo Power 8 &#8486;</span> : <span>${product.stereoPower8OHM}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">stereo Power 4 &#8486;</span> : <span>${product.stereoPower4OHM}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">stereo Power 2 &#8486;</span> : <span>${product.stereoPower2OHM}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">BTL 8 &#8486;</span> : <span>${product.btl8OHM}</span>
-                      </p>
-                       <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">BTL 4  &#8486;</span> : <span>${product.btl4OHM}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">frequency Response</span> : <span>${product.frequencyResponse}</span>
-                      </p>
-                  </div>
-                  <div class="col-12 col-md-4">
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">THD+N</span> : <span>${product.thdPlus}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">S/N Ratio</span> : <span>${product.sSourceNRatio}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">signal-To-Noise-Ratio</span> : <span>${product.slewRatio}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">damping Factor</span> : <span>${product.dampingFactor}</span>
-                      </p>
-                       <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">damping Factor</span> : <span>${product.dampingFactor}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">cross Talk</span> : <span>${product.crossTalk}</span>
-                      </p>
-                  </div>
-                  <div class="col-12 col-md-4">
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">input Impedance</span> : <span>${product.inputImpedance}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">input Sensitivity</span> : <span>${product.inputSensitivity}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">protect</span> : <span>${product.protect}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">g Weight</span> : <span>${product.gWeight}</span>
-                      </p>
-                       <p class="text-capitalize m-0 p-0">
-                     <span class="fw-semibold">dimension</span>  : <span>${product.dimension}</span>
-                      </p>
-                      <p class="text-capitalize m-0 p-0">
-                      <span class="fw-semibold">packing Size</span> : <span>${product.packingSize}</span>
-                      </p>
-                  </div>
-                  </div>
+          let detailCatalogue = "";
+
+          const fields = [
+            { label: "Stereo Power 8 &#8486;", value: product.stereoPower8Ohm },
+            { label: "Stereo Power 4 &#8486;", value: product.stereoPower4Ohm },
+            { label: "Stereo Power 2 &#8486;", value: product.stereoPower2Ohm },
+            { label: "BTL 8 &#8486;", value: product.BTLOhm8 },
+            { label: "BTL 4 &#8486;", value: product.BTLOhm4 },
+            { label: "Frequency Response", value: product.frequencyResponse },
+            { label: "THD+", value: product.THD },
+            { label: "S/N Ratio", value: product.SNRatio },
+            { label: "Damping Factor", value: product.dampingFactor },
+            { label: "Output Circuitry", value: product.outputCircuitry },
+            { label: "Crosstalk", value: product.crosstalk },
+            { label: "Input Impedance", value: product.inputImpedance },
+            { label: "Input Sensitivity", value: product.inputSensitivity },
+            { label: "Protect", value: product.protect },
+            { label: "G Weight", value: product.GWeight },
+            { label: "Dimension", value: product.dimension },
+            { label: "Packing Size", value: product.packingSize },
+            { label: "Gain", value: product.gain },
+            { label: "Optional Gain", value: product.optionalGain },
+            {
+              label: "Degree of Separation",
+              value: product.degreeOfSeparation,
+            },
+            { label: "Dissipate Heat", value: product.dissipateHeat },
+            { label: "Appearance Volume", value: product.appearanceVolume },
+          ];
+
+          fields.forEach((field) => {
+            if (field.value) {
+              detailCatalogue += `
+                <p class="text-capitalize m-0 p-0">
+                  <span class="fw-semibold">${field.label}</span> : <span>${field.value}</span>
+                </p>
               `;
+            }
+          });
+
+          catalogueProduct.innerHTML = detailCatalogue;
         }
       })
       .catch((error) => {

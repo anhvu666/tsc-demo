@@ -32,100 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
             class="img-responsive mx-auto d-block"
           />
           `;
-          // catalogueProduct.innerHTML = `
-          //   <div class="row mt-3">
-          //       <div class="col-12 col-md-4">
-          //           <h5 class="fw-bold text-secondary">System Parameter</h5>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">frequency Range Cha</span> : <span>${product.frequencyRangeCha}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //            <span class="fw-semibold">frequency Quantity</span> : <span>${product.frequencyQuantity}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">signal-To-Noise-Ratio</span> : <span>${product.signalToNoiseRatio}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">total Harmonic Distortion</span> : <span>${product.totalHarmonicDistortion}</span>
-          //           </p>
-          //            <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">modulation Mode</span> : <span>${product.modulationMode}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">frequency Response</span> : <span>${product.frequencyResponse}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">working Distance</span> : <span>${product.workingDistance}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">Channel interval</span> : <span>${product.channelInterval}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">frequency Bandwidth</span> : <span>${product.frequencyBandwidth}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">max Deviation</span> : <span>${product.maxDeviation}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //             <span class="fw-semibold">frequency Stability</span> : <span>${product.frequencyStability}</span>
-          //           </p>
-          //       </div>
-          //       <div class="col-12 col-md-4">
-          //           <h5 class="fw-bold text-secondary">Receiver Parameter</h5>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">oscillation Mode</span> : <span>${product.oscillationModeReceiverParam}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">antenna Access</span> : <span>${product.antennaAccess}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">sensitivity</span> : <span>${product.sensitivity}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">mid-Frequency</span> : <span>${product.midFrequence}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">sensitivity Adjustment</span> : <span>${product.sensitivityAdjustment}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">spurious Suppression</span> : <span>${product.spuriousSuppression}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">power SupplyMode</span> : <span>${product.powerSupplyMode}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">max Output Electrical Level</span> : <span>${product.maxOutputElectricalLevel}</span>
-          //           </p>
-          //       </div>
-          //       <div class="col-12 col-md-4">
-          //           <h5 class="fw-bold text-secondary">Transmitter Parameter</h5>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">output Power</span> : <span>${product.outputPower}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">oscillation Mode</span> : <span>${product.oscillationModeTransmitterParam}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">directivity</span> : <span>${product.directivity}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">transmitter Type</span> : <span>${product.transmitterType}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">frequency Response</span> : <span>${product.frequencyResponse}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">pipe Body Material</span> : <span>${product.pipeBodyMaterial}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">power Supply</span> : <span>${product.powerSupply}</span>
-          //           </p>
-          //           <p class="text-capitalize m-0 p-0">
-          //           <span class="fw-semibold">battery Life Time</span> : <span>${product.batteryLifeTime}</span>
-          //           </p>
-          //       </div>
-          //       </div>
-          //   `;
           let systemParamCatalogue = "";
           let receiverParamCatalogue = "";
           let transmitterParamCatalogue = "";
@@ -140,8 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
               value: product.frequencyRangeChb,
             },
             {
+              label: "Channels",
+              value: product.channels,
+            },
+            {
               label: "Signal to Noise Ratio",
               value: product.signalToNoiseRatio,
+            },
+            {
+              label: "frequency quantity",
+              value: product.frequencyQuantity,
             },
             {
               label: "Total Harmonic Distortion",
@@ -152,11 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
             { label: "Frequency Bandwidth", value: product.frequencyBandwidth },
             { label: "Channel Interval", value: product.channelInterval },
             { label: "Max Deviation", value: product.maxDeviation },
+            { label: "frequency response", value: product.frequencyResponse },
             { label: "Frequency Stability", value: product.frequencyStability },
+            { label: "Frequency interval", value: product.frequencyInterval },
           ];
           const fieldsReceiverParam = [
             {
-              label: "Oscillation Mode (Receiver)",
+              label: "Oscillation Mode",
               value: product.oscillationModeReceiverParam,
             },
             { label: "Modulation", value: product.modulation },
