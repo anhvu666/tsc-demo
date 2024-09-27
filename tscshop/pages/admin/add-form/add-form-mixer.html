@@ -22,19 +22,17 @@
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    />
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet" />
     <link
       href="/assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
-    <!-- Custom styles for this page -->
-    <link
-      href="/assets/vendor/datatables/dataTables.bootstrap4.min.css"
-      rel="stylesheet"
-    />
+    <link href="/assets/css/admin-dashboard.css" rel="stylesheet" />
   </head>
 
   <body id="page-top">
@@ -48,9 +46,11 @@
         <!-- Sidebar - Brand -->
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/tscshop/pages/admin/admin-index.html"
+          href="admin-index.html"
         >
-          <div class="sidebar-brand-icon rotate-n-15"></div>
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
           <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
 
@@ -78,6 +78,7 @@
             aria-expanded="true"
             aria-controls="collapsePages"
           >
+            <i class="fas fa-fw fa-folder"></i>
             <span>Micro</span>
           </a>
           <div
@@ -101,6 +102,7 @@
             aria-expanded="true"
             aria-controls="collapsePages"
           >
+            <i class="fas fa-fw fa-folder"></i>
             <span>Amplifier</span>
           </a>
           <div
@@ -124,6 +126,7 @@
             aria-expanded="true"
             aria-controls="collapsePages"
           >
+            <i class="fas fa-fw fa-folder"></i>
             <span>Speaker</span>
           </a>
           <div
@@ -163,6 +166,9 @@
         </li>
 
         <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -184,7 +190,9 @@
             <button
               id="sidebarToggleTop"
               class="btn btn-link d-md-none rounded-circle mr-3"
-            ></button>
+            >
+              <i class="fa fa-bars"></i>
+            </button>
 
             <!-- Topbar Search -->
             <form
@@ -247,122 +255,205 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Micro</h1>
+              <h1 class="h3 mb-0 text-gray-800">Create mixer</h1>
             </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex align-items-center justify-content-between"
-              >
-                <h6 class="m-0 font-weight-bold text-primary">Micro table</h6>
-                <a
-                  role="button"
-                  class="btn btn-primary btn-sm"
-                  href="./add-form/add-form-speaker.html"
-                  >Add +</a
-                >
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Create mixer</h6>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-hover align-middle"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th scope="col-1">STT</th>
-                        <th scope="col-3">Name</th>
-                        <th scope="col-7">Description</th>
-                        <th scope="col-1">Actions</th>
-                      </tr>
-                    </thead>
-                    <tfoot>
-                      <tr>
-                        <th>STT</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                      <tr>
-                        <th class="align-middle">1</th>
-                        <td class="align-middle">Mark</td>
-                        <td
-                          class="text-truncate align-middle"
-                          style="max-width: 200px"
-                        >
-                          <div
-                            class="d-inline-block text-truncate"
-                            style="max-width: 100%"
-                          >
-                            Generating random paragraphs can be an excellent way
-                            for writers to get their creative flow going at the
-                            beginning of the day. The writer has no idea what
-                            topic the random paragraph will be about when it
-                            appears. This forces the writer to use creativity to
-                            complete one of three common writing challenges. The
-                            writer can use the paragraph as the first one of a
-                            short story and build
-                          </div>
-                        </td>
-                        <td>
-                          <div>
-                            <button
-                              type="button"
-                              class="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              type="button"
-                              class="btn btn-danger btn-sm deleteButton"
-                              data-bs-toggle="popover"
-                              data-bs-html="true"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="align-middle">2</th>
-                        <td>Generating random paragraphs</td>
-                        <td class="text-truncate" style="max-width: 200px">
-                          <div
-                            class="d-inline-block text-truncate"
-                            style="max-width: 100%"
-                          >
-                            Generating random paragraphs can be an excellent way
-                            for writers to get their creative flow going at the
-                            beginning of the day. The writer has no idea what
-                            topic the random paragraph will be about when it
-                            appears. This forces the writer to use creativity to
-                            complete one of three common writing challenges. The
-                            writer can use the paragraph as the first one of a
-                            short story and build
-                          </div>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-success btn-sm">
-                            Edit
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-sm deleteButton"
-                            data-bs-toggle="popover"
-                            data-bs-html="true"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <form
+                  action="add.html"
+                  method="post"
+                  enctype="multipart/form-data"
+                >
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="id" class="form-label">Model:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="id"
+                        placeholder="Enter"
+                        name="id"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-sm-2">
+                      <label for="imgId" class="form-label"
+                        >Upload Image:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="imgId"
+                        name="imgId"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="description" class="form-label"
+                        >Description:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <textarea
+                        class="form-control"
+                        id="description"
+                        placeholder="Enter"
+                        name="description"
+                        rows="4"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="channel" class="form-label">Channel:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="channel"
+                        placeholder="Enter"
+                        name="channel"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="channelEQ" class="form-label"
+                        >Channel EQ:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="channelEQ"
+                        placeholder="Enter"
+                        name="channelEQ"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="aux" class="form-label">AUX:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="aux"
+                        placeholder="Enter"
+                        name="aux"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="return" class="form-label">Return:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="return"
+                        placeholder="Enter"
+                        name="return"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="effects" class="form-label">Effects:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="effects"
+                        placeholder="Enter"
+                        name="effects"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="mainOut" class="form-label">Main out:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="mainOut"
+                        placeholder="Enter"
+                        name="mainOut"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="groups" class="form-label">Groups:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="groups"
+                        placeholder="Enter"
+                        name="groups"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="phantomPower" class="form-label"
+                        >Phantom power:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="phantomPower"
+                        placeholder="Enter"
+                        name="phantomPower"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="usbPlayer" class="form-label"
+                        >Usb player:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="usbPlayer"
+                        placeholder="Enter"
+                        name="usbPlayer"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12 text-end">
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -429,31 +520,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const popoverTriggers = document.querySelectorAll(".deleteButton");
-
-        popoverTriggers.forEach(function (trigger) {
-          const popover = new bootstrap.Popover(trigger, {
-            container: "body",
-            placement: "auto",
-            html: true,
-            title: "Confirm delete",
-            content:
-              '<div><div class="mb-3">Do you want to delete this?</div><div class="d-flex gap-2 align-items-center"><a id="confirmDelete" role="button" class="btn btn-primary btn-sm">Delete</a><a id="cancelDelete" role="button" class="btn btn-secondary btn-sm">Cancel</a></div></div>',
-          });
-
-          document.body.addEventListener("click", function (e) {
-            if (e.target.id === "confirmDelete") {
-              console.log("Item deleted");
-            } else if (e.target.id === "cancelDelete") {
-              console.log("Delete canceled");
-              popover.hide();
-            }
-          });
-        });
-      });
-    </script>
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
