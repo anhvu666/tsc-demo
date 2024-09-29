@@ -37,6 +37,44 @@
   </head>
 
   <body id="page-top">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        class="toast toast-success"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-success"></div>
+          <strong class="me-auto text-success">Done!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Successfully</div>
+      </div>
+      <div
+        class="toast toast-fail"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-danger"></div>
+          <strong class="me-auto text-danger">Failed!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Unsuccessfully</div>
+      </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -267,37 +305,18 @@
                 </h6>
               </div>
               <div class="card-body">
-                <form
-                  action="add.html"
-                  method="post"
-                  enctype="multipart/form-data"
-                >
+                <form id="create-amplifier-form">
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="id" class="form-label">Model:</label>
+                      <label for="mode" class="form-label">Model:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="id"
+                        id="mode"
                         placeholder="Enter"
-                        name="id"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-sm-2">
-                      <label for="imgId" class="form-label"
-                        >Upload Image:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="imgId"
-                        name="imgId"
+                        name="mode"
                       />
                     </div>
                   </div>
@@ -320,77 +339,81 @@
 
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower8Ohm" class="form-label"
-                        >Stereo power 8 ohm:</label
+                      <label for="stereoPower8OHM" class="form-label"
+                        >Stereo power 80 ohm:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower8Ohm"
+                        id="stereoPower8OHM"
                         placeholder="Enter"
-                        name="stereoPower8Ohm"
+                        name="stereoPower8OHM"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower4Ohm" class="form-label"
-                        >Stereo power 4 ohm:</label
+                      <label for="stereoPower4OHM" class="form-label"
+                        >Stereo power 40 ohm:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower4Ohm"
+                        id="stereoPower4OHM"
                         placeholder="Enter"
-                        name="stereoPower4Ohm"
+                        name="stereoPower4OHM"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower2Ohm" class="form-label"
-                        >Stereo power 2 ohm:</label
+                      <label for="stereoPower2OHM" class="form-label"
+                        >Stereo power 20 ohm:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower2Ohm"
+                        id="stereoPower2OHM"
                         placeholder="Enter"
-                        name="stereoPower2Ohm"
+                        name="stereoPower2OHM"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="BTL8Ohm" class="form-label">BTL 8 ohm:</label>
+                      <label for="btl8OHM" class="form-label"
+                        >BTL 80 ohm:</label
+                      >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="BTL8Ohm"
+                        id="btl8OHM"
                         placeholder="Enter"
-                        name="BTL8Ohm"
+                        name="btl8OHM"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="BTL4Ohm" class="form-label">BTL 4 ohm:</label>
+                      <label for="btl4OHM" class="form-label"
+                        >BTL 40 ohm:</label
+                      >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="BTL4Ohm"
+                        id="btl4OHM"
                         placeholder="Enter"
-                        name="BTL4Ohm"
+                        name="btl4OHM"
                       />
                     </div>
                   </div>
@@ -412,29 +435,47 @@
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="THDPlus" class="form-label">THD+:</label>
+                      <label for="thdPlus" class="form-label">THD+:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="THDPlus"
+                        id="thdPlus"
                         placeholder="Enter"
-                        name="THDPlus"
+                        name="thdPlus"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="SNRatio" class="form-label">S/N Ratio:</label>
+                      <label for="sSourceNRatio" class="form-label"
+                        >S/N Ratio:</label
+                      >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="SNRatio"
+                        id="sSourceNRatio"
                         placeholder="Enter"
-                        name="SNRatio"
+                        name="sSourceNRatio"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="slewRatio" class="form-label"
+                        >Slew Ratio:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="slewRatio"
+                        placeholder="Enter"
+                        name="slewRatio"
                       />
                     </div>
                   </div>
@@ -456,7 +497,7 @@
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="outputCircuitry" class="form-label"
+                      <label for="ourputCircuitry" class="form-label"
                         >Output circuitry:</label
                       >
                     </div>
@@ -464,15 +505,15 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="outputCircuitry"
+                        id="ourputCircuitry"
                         placeholder="Enter"
-                        name="outputCircuitry"
+                        name="ourputCircuitry"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="crosstalk" class="form-label"
+                      <label for="crossTalk" class="form-label"
                         >Crosstalk:</label
                       >
                     </div>
@@ -480,9 +521,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="crosstalk"
+                        id="crossTalk"
                         placeholder="Enter"
-                        name="crosstalk"
+                        name="crossTalk"
                       />
                     </div>
                   </div>
@@ -534,15 +575,15 @@
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="weight" class="form-label">Weight:</label>
+                      <label for="gWeight" class="form-label">Weight:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="weight"
+                        id="gWeight"
                         placeholder="Enter"
-                        name="weight"
+                        name="gWeight"
                       />
                     </div>
                   </div>
@@ -594,7 +635,7 @@
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="optionalGain" class="form-label"
+                      <label for="optionalGian" class="form-label"
                         >Optional Gain:</label
                       >
                     </div>
@@ -602,9 +643,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="optionalGain"
+                        id="optionalGian"
                         placeholder="Enter"
-                        name="optionalGain"
+                        name="optionalGian"
                       />
                     </div>
                   </div>
@@ -734,5 +775,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
+    <script src="/assets/js/api/admin/amplifier.js"></script>
   </body>
 </html>

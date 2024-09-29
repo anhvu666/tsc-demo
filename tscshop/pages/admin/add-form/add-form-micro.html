@@ -36,6 +36,44 @@
   </head>
 
   <body id="page-top">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        class="toast toast-success"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-success"></div>
+          <strong class="me-auto text-success">Done!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Successfully</div>
+      </div>
+      <div
+        class="toast toast-fail"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-danger"></div>
+          <strong class="me-auto text-danger">Failed!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Unsuccessfully</div>
+      </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -264,45 +302,10 @@
                 <h6 class="m-0 font-weight-bold text-primary">Create micro</h6>
               </div>
               <div class="card-body">
-                <form
-                  action="add.html"
-                  method="post"
-                  enctype="multipart/form-data"
-                >
+                <form id="create-micro-form">
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="id" class="form-label">Model:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="id"
-                        placeholder="Enter"
-                        name="id"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-sm-2">
-                      <label for="imgId" class="form-label"
-                        >Upload Image:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="imgId"
-                        name="imgId"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="microName" class="form-label"
-                        >Micro name:</label
-                      >
+                      <label for="microName" class="form-label">Model:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
@@ -311,6 +314,54 @@
                         id="microName"
                         placeholder="Enter"
                         name="microName"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="description" class="form-label"
+                        >Description:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="description"
+                        placeholder="Enter"
+                        name="description"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="frequencyQuantity" class="form-label"
+                        >Frequency Quantity:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="frequencyQuantity"
+                        placeholder="Enter"
+                        name="frequencyQuantity"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="sSourceNRatio" class="form-label"
+                        >sSourceNRatio:</label
+                      >
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="sSourceNRatio"
+                        placeholder="Enter"
+                        name="sSourceNRatio"
                       />
                     </div>
                   </div>
@@ -750,6 +801,20 @@
                       />
                     </div>
                   </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="channels" class="form-label">Channels:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="channels"
+                        placeholder="Enter"
+                        name="channels"
+                      />
+                    </div>
+                  </div>
 
                   <div class="text-end">
                     <button type="submit" class="btn btn-primary">Add</button>
@@ -826,5 +891,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
+    <script src="/assets/js/api/admin/micro.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const API_URL = "https://0776f5a4-afec-4066-89ae-8830a69c83ce.mock.pstmn.io";
+const API_URL = "https://tscproaudio.com/manager";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const listSeriesSpeaker = document.querySelector(".list-series-speaker");
@@ -9,11 +9,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function fetchSeriesSpeaker() {
     try {
       const response = await fetch(
-        `${API_URL}/manager/speakers-series/all?page=0&size=5`
+        `${API_URL}/speakers-series/all?page=0&size=5`
       );
       const data = await response.json();
+      console.log("speaker", data);
       const products = data.content;
-
+      if (products.length === 0) {
+        listSeriesSpeaker.innerHTML =
+          '<div class="text-center fs-4">No data</div';
+      }
       products.forEach((product) => {
         const markup = `
           <div class="col-12 col-md-4 item">
@@ -65,10 +69,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function fetchSeriesAmplifier() {
     try {
       const response = await fetch(
-        `${API_URL}/manager/power-ampli-series/all?page=0&size=5`
+        `${API_URL}/power-ampli-series/all?page=0&size=5`
       );
       const data = await response.json();
       const products = data.content;
+      if (products.length === 0) {
+        listSeriesAmplifier.innerHTML =
+          '<div class="text-center fs-4">No data</div';
+      }
 
       products.forEach((product) => {
         const markup = `
@@ -120,11 +128,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function fetchSeriesMicro() {
     try {
       const response = await fetch(
-        `${API_URL}/manager/micro-tsc-series/all?page=0&size=5`
+        `${API_URL}/micro-tsc-series/all?page=0&size=5`
       );
       const data = await response.json();
-      console.log("data", data);
       const products = data.content;
+      if (products.length === 0) {
+        listSeriesMicro.innerHTML =
+          '<div class="text-center fs-4">No data</div';
+      }
 
       products.forEach((product) => {
         const markup = `

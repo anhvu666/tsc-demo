@@ -1,11 +1,13 @@
-const API_URL = "https://0776f5a4-afec-4066-89ae-8830a69c83ce.mock.pstmn.io";
+const API_URL = "https://tscproaudio.com/manager";
 
 document.addEventListener("DOMContentLoaded", function () {
+  headers.append("Authorization", "Basic " + encodedCredentials);
+
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
   function getProductDetails() {
-    fetch(`${API_URL}/manager/ampli/${productId}`)
+    fetch(`${API_URL}/ampli/${productId}`)
       .then((response) => response.json())
       .then((product) => {
         const catalogueProduct = document.querySelector(
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const breadCrumb = document.querySelector(".bread-crumb-name");
 
         breadCrumb.innerHTML = `
-        <strong><span>${product.microName}</span></strong>
+        <strong><span>${product.mode}</span></strong>
         `;
 
         if (product) {
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { label: "BTL 8 &#8486;", value: product.BTLOhm8 },
             { label: "BTL 4 &#8486;", value: product.BTLOhm4 },
             { label: "Frequency Response", value: product.frequencyResponse },
-            { label: "THD+", value: product.THD },
+            { label: "THD+", value: product.thdPlus },
             { label: "S/N Ratio", value: product.SNRatio },
             { label: "Damping Factor", value: product.dampingFactor },
             { label: "Output Circuitry", value: product.outputCircuitry },
