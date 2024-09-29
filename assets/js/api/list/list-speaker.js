@@ -1,4 +1,4 @@
-const API_URL = "https://0776f5a4-afec-4066-89ae-8830a69c83ce.mock.pstmn.io";
+const API_URL = "https://tscproaudio.com/manager";
 
 document.addEventListener("DOMContentLoaded", function () {
   const listProduct = document.querySelector(".listAllSpeaker");
@@ -11,13 +11,25 @@ document.addEventListener("DOMContentLoaded", function () {
   function fetchListProduct(page) {
     loadingMessage.style.display = "block";
     fetch(
-      `${API_URL}/manager/n9-speaker-series/all?page=${page}&size=${productsPerPage}`
+      `${API_URL}/n9-speaker-series/all?page=${
+        page - 1
+      }&size=${productsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
-        loadingMessage.style.display = "block";
+        loadingMessage.style.display = "none";
+        listProduct.innerHTML = "";
+
+        if (data.content.length === 0) {
+          listProduct.innerHTML =
+            '<div class="text-center fs-2 d-flex justify-content-center align-items-center" style="height:300px"><div>No data</div><img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></div>';
+          pagination.style.display = "none";
+          return;
+        }
+
         const listSpeaker = data.content;
         const totalProducts = data.total;
+
         listSpeaker.forEach((product) => {
           const list = `
                 <div class="col-12 col-md-4 col-lg-4 col-xl-4 product-col">

@@ -14,11 +14,6 @@
 
     <!-- Custom fonts for this template-->
     <link
-      href="/assets/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
@@ -36,6 +31,44 @@
   </head>
 
   <body id="page-top">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        class="toast toast-success"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-success"></div>
+          <strong class="me-auto text-success">Done!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Successfully</div>
+      </div>
+      <div
+        class="toast toast-fail"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <div class="rounded me-2 p-2 bg-danger"></div>
+          <strong class="me-auto text-danger">Failed!</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Unsuccessfully</div>
+      </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -252,6 +285,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
+
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
@@ -264,25 +298,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Create mixer</h6>
               </div>
               <div class="card-body">
-                <form
-                  action="add.html"
-                  method="post"
-                  enctype="multipart/form-data"
-                >
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="id" class="form-label">Model:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="id"
-                        placeholder="Enter"
-                        name="id"
-                      />
-                    </div>
-                  </div>
+                <form id="create-img-mixer">
                   <div class="row mb-3">
                     <div class="col-sm-2">
                       <label for="imgId" class="form-label"
@@ -293,11 +309,37 @@
                       <input
                         type="file"
                         class="form-control"
-                        id="imgId"
-                        name="imgId"
+                        id="file"
+                        name="file"
+                        accept=".png, .jpg, .jpeg"
                       />
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-sm-12 text-end">
+                      <div id="responseMessage"></div>
+                      <button type="submit" class="btn btn-primary">
+                        Add +
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <form id="create-mixer-form">
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="id" class="form-label">Model:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="modelMixer"
+                        name="modelMixer"
+                        placeholder="Enter"
+                      />
+                    </div>
+                  </div>
+
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
                       <label for="description" class="form-label"
@@ -307,8 +349,8 @@
                     <div class="col-sm-10">
                       <textarea
                         class="form-control"
-                        id="description"
                         placeholder="Enter"
+                        id="description"
                         name="description"
                         rows="4"
                       ></textarea>
@@ -323,8 +365,8 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="channel"
                         placeholder="Enter"
+                        id="channel"
                         name="channel"
                       />
                     </div>
@@ -339,8 +381,8 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="channelEQ"
                         placeholder="Enter"
+                        id="channelEQ"
                         name="channelEQ"
                       />
                     </div>
@@ -353,9 +395,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="aux"
                         placeholder="Enter"
-                        name="aux"
+                        id="AUX"
+                        name="AUX"
                       />
                     </div>
                   </div>
@@ -367,9 +409,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="return"
                         placeholder="Enter"
-                        name="return"
+                        id="returnMixer"
+                        name="returnMixer"
                       />
                     </div>
                   </div>
@@ -395,8 +437,8 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="mainOut"
                         placeholder="Enter"
+                        id="mainOut"
                         name="mainOut"
                       />
                     </div>
@@ -409,9 +451,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="groups"
                         placeholder="Enter"
-                        name="groups"
+                        id="groupsMixer"
+                        name="groupsMixer"
                       />
                     </div>
                   </div>
@@ -425,8 +467,8 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="phantomPower"
                         placeholder="Enter"
+                        id="phantomPower"
                         name="phantomPower"
                       />
                     </div>
@@ -441,8 +483,8 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="usbPlayer"
                         placeholder="Enter"
+                        id="usbPlayer"
                         name="usbPlayer"
                       />
                     </div>
@@ -450,6 +492,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 text-end">
+                      <div id="responseMessage"></div>
                       <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                   </div>
@@ -525,5 +568,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
+    <script src="/assets/js/api/admin/mixer.js"></script>
   </body>
 </html>

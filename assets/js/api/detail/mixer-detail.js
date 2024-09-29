@@ -1,9 +1,11 @@
+const API_URL = "https://tscproaudio.com/manager";
+
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
   function getProductDetails() {
-    fetch(`${API_URL}/manager/n9-speaker-series/${productId}`)
+    fetch(`${API_URL}/n9-speaker-series/${productId}`)
       .then((response) => response.json())
       .then((product) => {
         const catalogueProduct = document.querySelector(
@@ -14,19 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const breadCrumb = document.querySelector(".bread-crumb-name");
 
         breadCrumb.innerHTML = `
-          <strong><span>${product.microName}</span></strong>
+          <strong><span>${product.modelMixer}</span></strong>
           `;
 
         if (product) {
           titleProduct.innerHTML = `
-                 <h1>${product.n9SpeakerSeriesName}</h1>
+                 <h1>${product.modelMixer}</h1>
                 `;
           imageProduct.innerHTML = `
                 <img
                   height="540"
                   width="540"
                   src="${product.imgId}"
-                  alt="${product.n9SpeakerSeriesName}"
+                  alt="${product.modelMixer}"
                   class="img-responsive mx-auto d-block"
                 />
                 `;
