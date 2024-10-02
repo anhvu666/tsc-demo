@@ -1,8 +1,6 @@
 const API_URL = "https://tscproaudio.com/manager";
 
 document.addEventListener("DOMContentLoaded", function () {
-  headers.append("Authorization", "Basic " + encodedCredentials);
-
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
@@ -16,21 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleProduct = document.querySelector(".title-product");
         const imageProduct = document.querySelector(".picture-product");
         const breadCrumb = document.querySelector(".bread-crumb-name");
+        const detail = document.querySelector(".product_getcontent");
+        detail.innerHTML = `
+        <p>${product.description || `No description`}</p>
+        `;
 
         breadCrumb.innerHTML = `
-        <strong><span>${product.mode}</span></strong>
+        <strong><span>${product.model}</span></strong>
         `;
 
         if (product) {
           titleProduct.innerHTML = `
-             <h1>${product.mode}</h1>
+             <h1>${product.model}</h1>
             `;
           imageProduct.innerHTML = `
             <img
               height="540"
               width="540"
               src="${product.imgId}"
-              alt="${product.mode}"
+              alt="${product.model}"
               class="img-responsive mx-auto d-block"
             />
             `;

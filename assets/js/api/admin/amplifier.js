@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <th class="align-middle">${
               (currentPage - 1) * productsPerPage + index + 1
             }</th>
-            <td class="align-middle">${product.mode}</td>
+            <td class="align-middle">${product.model}</td>
             <td class="align-middle">
             <img width="100" height="40" src="${product.imgId}" alt="${
-          product.mode
+          product.model
         }" />
             </td>
             <td class="text-truncate align-middle" style="max-width: 200px">
@@ -52,7 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
             </td>
             <td>
               <div>
-                <button type="button" class="btn btn-success btn-sm">Edit</button>
+                <a 
+                href="/tscshop/pages/admin/edit-from/amplifier-edit.html?id=${
+                  product.id
+                }" 
+                type="button" class="btn btn-success btn-sm">
+                Edit
+                </a>
                 <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true"
                 data-product-id="${product.id}">
                 Delete
@@ -137,10 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (response.ok) {
-            successToast.show();
+            alert("Delete success");
             fetchListProduct(currentPage);
           } else {
-            failToast.show();
+            alert("Delete failed");
           }
         } catch (error) {
           console.error("Error deleting product:", error);
@@ -154,13 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("create-amplifier-form")
-    .addEventListener("submit", async function (event) {
+  const form = document.getElementById("create-amplifier-form");
+  if (form) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
       const data = {
-        mode: document.getElementById("mode").value,
+        model: document.getElementById("model").value,
         description: document.getElementById("description").value,
         stereoPower8OHM: document.getElementById("stereoPower8OHM").value,
         stereoPower4OHM: document.getElementById("stereoPower4OHM").value,
@@ -208,10 +214,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const result = await response.json();
         successToast.show();
-        console.log(result);
       } catch (error) {
         failToast.show();
         console.error("Error:", error);
       }
     });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const uploadForm = document.getElementById("create-img-amplifier");
+
+  if (uploadForm) {
+    uploadForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const imageInput = document.getElementById("file");
+      const file = imageInput.files[0];
+
+      if (file && !["image/png", "image/jpeg"].includes(file.type)) {
+        alert("Only PNG and JPG files are allowed.");
+        return;
+      }
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(
+          `https://cors-anywhere.herokuapp.com/https://tscproaudio.com/upload/ampli`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: basicAuth,
+            },
+            body: formData,
+          }
+        );
+        const contentType = response.headers.get("Content-Type");
+
+        let result;
+        if (contentType && contentType.includes("application/json")) {
+          result = await response.json();
+        } else {
+          result = await response.text();
+        }
+        if (!response.ok) {
+          const errorData = await response.json();
+          failToast.show();
+          console.error("Error Details:", errorData);
+          throw new Error("Failed to create mixer.");
+        }
+
+        successToast.show();
+      } catch (error) {
+        failToast.show();
+        console.error("Error:", error);
+      }
+    });
+  }
 });

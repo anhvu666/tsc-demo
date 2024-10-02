@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const productsPerPage = 15;
 
   async function fetchListProduct(page) {
-    listProduct.innerHTML = `<tr><td colspan="4" class="text-center">Loading</td></tr>`;
+    if (listProduct) {
+      listProduct.innerHTML = `<tr><td colspan="4" class="text-center">Loading</td></tr>`;
+    }
     try {
       const res = await fetch(
         `${API_URL}/micro/all?page=${page - 1}&size=${productsPerPage}`
@@ -26,15 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
       listProduct.innerHTML = "";
 
       if (listMicro.length === 0) {
-        listProduct.innerHTML =
-          '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
+        if (listProduct) {
+          listProduct.innerHTML =
+            '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
+        }
         pagination.style.display = "none";
         return;
       }
 
       listMicro.forEach((product, index) => {
         const list = `
-          <tr data-product-id="${product.id}>
+          <tr data-product-id="${product.id}">
             <th class="align-middle">${
               (currentPage - 1) * productsPerPage + index + 1
             }</th>
@@ -51,9 +55,15 @@ document.addEventListener("DOMContentLoaded", function () {
             </td>
             <td>
               <div>
-                <button type="button" class="btn btn-success btn-sm">Edit</button>
-                <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true"
-                data-product-id="${product.id}>
+                <a 
+                href="/tscshop/pages/admin/edit-from/micro-edit.html?id=${
+                  product.id
+                }" 
+                type="button" class="btn btn-success btn-sm">
+                Edit
+                </a>
+                <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true"  
+                    data-product-id="${product.id}">
                 Delete
                 </button>
               </div>
@@ -65,9 +75,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const totalPages = Math.ceil(totalProducts / productsPerPage);
       displayPagination(totalPages, page);
+      deleteProduct();
     } catch (error) {
-      listProduct.innerHTML =
-        '<tr><td colspan="4" class="text-center">Error fetching products. Please try again later.</td></tr>';
+      if (listProduct) {
+        listProduct.innerHTML =
+          '<tr><td colspan="4" class="text-center">Error fetching products. Please try again later.</td></tr>';
+      }
       console.log("Error fetching products:", error);
     }
   }
@@ -135,10 +148,10 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (response.ok) {
-            successToast.show();
+            alert("Delete success");
             fetchListProduct(currentPage);
           } else {
-            failToast.show();
+            alert("Delete failed");
           }
         } catch (error) {
           console.error("Error deleting product:", error);
@@ -152,9 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("create-micro-form")
-    .addEventListener("submit", async function (event) {
+  const form = document.getElementById("create-micro-form");
+  if (form) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
       const data = {
@@ -223,10 +236,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const result = await response.json();
         successToast.show();
-        console.log(result);
       } catch (error) {
         failToast.show();
         console.error("Error:", error);
       }
     });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const uploadForm = document.getElementById("create-img-micro");
+  if (uploadForm) {
+    uploadForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const imageInput = document.getElementById("file");
+      const file = imageInput.files[0];
+
+      if (file && !["image/png", "image/jpeg"].includes(file.type)) {
+        alert("Only PNG and JPG files are allowed.");
+        return;
+      }
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(
+          `https://cors-anywhere.herokuapp.com/https://tscproaudio.com/upload/micro`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: basicAuth,
+            },
+            body: formData,
+          }
+        );
+        const contentType = response.headers.get("Content-Type");
+
+        let result;
+        if (contentType && contentType.includes("application/json")) {
+          result = await response.json();
+        } else {
+          result = await response.text();
+        }
+        if (!response.ok) {
+          const errorData = await response.json();
+          failToast.show();
+          console.error("Error Details:", errorData);
+          throw new Error("Failed to create mixer.");
+        }
+
+        successToast.show();
+      } catch (error) {
+        failToast.show();
+        console.error("Error:", error);
+      }
+    });
+  }
 });

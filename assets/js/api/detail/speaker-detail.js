@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleProduct = document.querySelector(".title-product");
         const imageProduct = document.querySelector(".picture-product");
         const breadCrumb = document.querySelector(".bread-crumb-name");
+        const detail = document.querySelector(".product_getcontent");
+        detail.innerHTML = `
+        <p>${product.description || `No description`}</p>
+        `;
 
         breadCrumb.innerHTML = `
         <strong><span>${product.n9SpeakerSeriesName}</span></strong>
@@ -125,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
               value: product.inputAndOutputPart,
             },
             { label: "Case Material", value: product.caseMaterial },
-            { label: "Model", value: product.model },
             { label: "Normal Impedance", value: product.normalImpedance },
             {
               label: "Spray Painting Treatment",
@@ -137,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { label: "Digital Output", value: product.digitalOutput },
             { label: "Channel Number", value: product.channelNumber },
             { label: "THD", value: product.THD },
-            { label: "S Source N Ratio", value: product.sSourceNRatio },
+            { label: " S/N Ratio", value: product.sSourceNRatio },
             { label: "Damping Factor", value: product.dampingFactor },
             { label: "Cperating Range", value: product.cperatingRange },
             { label: "Power Current", value: product.powerCurrent },

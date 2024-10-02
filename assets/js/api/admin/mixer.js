@@ -1,4 +1,5 @@
 const API_URL = "https://tscproaudio.com/manager";
+const API_IMG = "https://tscproaudio.com";
 const successToast = new bootstrap.Toast(".toast-success");
 const failToast = new bootstrap.Toast(".toast-fail");
 
@@ -51,7 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
             </td>
             <td>
               <div>
-                <button type="button" class="btn btn-success btn-sm">Edit</button>
+                <a 
+                href="/tscshop/pages/admin/edit-from/mixer-edit.html?id=${
+                  product.id
+                }" 
+                type="button" class="btn btn-success btn-sm">
+                Edit
+                </a>
                 <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true"  
                     data-product-id="${product.id}">
                 Delete
@@ -136,10 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (response.ok) {
-            successToast.show();
+            alert("Delete success");
             fetchListProduct(currentPage);
           } else {
-            failToast.show();
+            alert("Delete failed");
           }
         } catch (error) {
           console.error("Error deleting product:", error);
@@ -155,9 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
 //create
 
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("create-mixer-form")
-    .addEventListener("submit", async function (event) {
+  const createForm = document.getElementById("create-mixer-form");
+  if (createForm) {
+    createForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
       const data = {
@@ -195,45 +202,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const result = await response.json();
         successToast.show();
-        console.log(result);
       } catch (error) {
         failToast.show();
         console.error("Error:", error);
       }
     });
+  }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("create-img-form")
-    .addEventListener("submit", async function (event) {
+  const upImageForm = document.getElementById("create-img-mixer");
+  if (upImageForm) {
+    upImageForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const data = {
-        modelMixer: document.getElementById("modelMixer").value,
-        description: document.getElementById("description").value,
-        channel: document.getElementById("channel").value,
-        channelEQ: document.getElementById("channelEQ").value,
-        AUX: document.getElementById("AUX").value,
-        returnMixer: document.getElementById("returnMixer").value,
-        effects: document.getElementById("effects").value,
-        mainOut: document.getElementById("mainOut").value,
-        groupsMixer: document.getElementById("groupsMixer").value,
-        phantomPower: document.getElementById("phantomPower").value,
-        usbPlayer: document.getElementById("usbPlayer").value,
-      };
+      const imageInput = document.getElementById("file");
+      const file = imageInput.files[0];
+
+      if (file && !["image/png", "image/jpeg"].includes(file.type)) {
+        alert("Only PNG and JPG files are allowed.");
+        return;
+      }
+
+      const form = event.target;
+      const formData = new FormData(form);
+
       try {
         const response = await fetch(
-          `https://cors-anywhere.herokuapp.com/${API_URL}/mixer/create`,
+          `https://cors-anywhere.herokuapp.com/https://tscproaudio.com/upload/mixer`,
           {
             method: "POST",
             headers: {
               Authorization: basicAuth,
-              Accept: "application/json",
-              "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: formData,
           }
         );
+        const contentType = response.headers.get("Content-Type");
+
+        let result;
+        if (contentType && contentType.includes("application/json")) {
+          result = await response.json();
+        } else {
+          result = await response.text();
+        }
         if (!response.ok) {
           const errorData = await response.json();
           failToast.show();
@@ -241,12 +253,11 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error("Failed to create mixer.");
         }
 
-        const result = await response.json();
-        myToast.show();
-        console.log(result);
+        successToast.show();
       } catch (error) {
         failToast.show();
         console.error("Error:", error);
       }
     });
+  }
 });
