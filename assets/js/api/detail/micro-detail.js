@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleProduct = document.querySelector(".title-product");
         const imageProduct = document.querySelector(".picture-product");
         const breadCrumb = document.querySelector(".bread-crumb-name");
+        const detail = document.querySelector(".product_getcontent");
+        detail.innerHTML = `
+        <p>${product.description || `No description`}</p>
+        `;
 
         breadCrumb.innerHTML = `
         <strong><span>${product.microName}</span></strong>

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                   <a class="image_thumb" href="/tscshop/pages/detail-product/mixer-detail.html?id=${product.id}"
                                       title="${product.modelMixer}">
                                       <img class="lazyload" width="200" height="200"
-                                          src="${product.modelMixer}"
+                                          src="${product.imgId}"
                                           alt="${product.modelMixer}">
                                   </a>
                               </div>

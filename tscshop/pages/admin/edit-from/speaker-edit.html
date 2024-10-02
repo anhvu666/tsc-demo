@@ -14,11 +14,6 @@
 
     <!-- Custom fonts for this template-->
     <link
-      href="/assets/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
@@ -36,44 +31,6 @@
   </head>
 
   <body id="page-top">
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-      <div
-        class="toast toast-success"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <div class="rounded me-2 p-2 bg-success"></div>
-          <strong class="me-auto text-success">Done!</strong>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">Successfully</div>
-      </div>
-      <div
-        class="toast toast-fail"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <div class="rounded me-2 p-2 bg-danger"></div>
-          <strong class="me-auto text-danger">Failed!</strong>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">Unsuccessfully</div>
-      </div>
-    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -290,18 +247,17 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
+
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Create speaker</h1>
+              <h1 class="h3 mb-0 text-gray-800">Edit Speaker</h1>
             </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                  Create speaker
-                </h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit Speaker</h6>
               </div>
               <div class="card-body">
                 <div class="text-danger mb-3">
@@ -313,34 +269,7 @@
                     - The image name must be the same as the model name
                   </p>
                 </div>
-                <form id="create-img-speaker">
-                  <div class="row mb-3">
-                    <div class="col-sm-2">
-                      <label for="file" class="form-label">Upload Image:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="file"
-                        name="file"
-                        accept=".png, .jpg, .jpeg"
-                      />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12 text-end">
-                      <div id="responseMessage"></div>
-                      <button
-                        type="submit"
-                        class="btn btn-primary btn-up-image"
-                      >
-                        Add +
-                      </button>
-                    </div>
-                  </div>
-                </form>
-                <form id="create-speaker-form">
+                <form id="edit-speaker-form">
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
                       <label for="n9SpeakerSeriesName" class="form-label"
@@ -358,6 +287,22 @@
                       />
                     </div>
                   </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="imgId" class="form-label">Image</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="imgId"
+                        name="imgId"
+                        placeholder="Enter"
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
                       <label for="systemDescription" class="form-label"
@@ -1181,7 +1126,7 @@
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
                       <label for="intermodulationDistortion" class="form-label"
-                        >Intermodulation Distortion:</label
+                        >Inter Modulation Distortion:</label
                       >
                     </div>
                     <div class="col-sm-10">
@@ -1977,7 +1922,12 @@
 
                   <div class="row">
                     <div class="col-sm-12 text-end">
-                      <button type="submit" class="btn btn-primary">Add</button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-submit-form"
+                      >
+                        Edit
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -2052,6 +2002,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
-    <script src="/assets/js/api/admin/speaker.js"></script>
+    <script src="/assets/js/api/edit/speaker-edit.js"></script>
   </body>
 </html>

@@ -34,20 +34,20 @@ document.addEventListener("DOMContentLoaded", function () {
                               <div class="product-thumbnail">
                                   <a class="product_overlay"
                                       href="/tscshop/pages/detail-product/amplifier-detail.html?id=${product.id}"
-                                      title="${product.mode}"></a>
+                                      title="${product.model}"></a>
                                   <a class="image_thumb" href="/tscshop/pages/detail-product/amplifier-detail.html?id=${product.id}"
-                                      title="${product.mode}">
+                                      title="${product.model}">
                                       <img class="lazyload" width="200" height="200"
-                                          src="${product.mode}"
-                                          alt="${product.mode}">
+                                          src="${product.imgId}"
+                                          alt="${product.model}">
                                   </a>
                               </div>
                               <div class="product-info">
                                   <h3 class="product-name">
                                       <a
                                           href="/tscshop/pages/detail-product/amplifier-detail.html?id=${product.id}"
-                                          title="MÁY GIẶT TOSHIBA AW-ME1050GV">
-                                          ${product.mode}
+                                          title=" ${product.model}">
+                                          ${product.model}
                                       </a>
                                   </h3>
                               </div>
