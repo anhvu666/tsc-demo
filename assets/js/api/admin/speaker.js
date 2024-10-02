@@ -49,12 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
             </td>
             <td class="text-truncate align-middle" style="max-width: 200px">
               <div class="d-inline-block text-truncate" style="max-width: 100%">
-                ${product.description || "No description available"}
+                ${product.systemDescription || "No description available"}
               </div>
             </td>
             <td>
               <div>
-                <button type="button" class="btn btn-success btn-sm">Edit</button>
+                <a 
+                href="/tscshop/pages/admin/edit-from/speaker-edit.html?id=${
+                  product.id
+                }" 
+                type="button" class="btn btn-success btn-sm">
+                Edit
+                </a>
                 <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true" 
                 data-product-id="${product.id}">
                 Delete
@@ -139,10 +145,10 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (response.ok) {
-            successToast.show();
+            alert("Delete success");
             fetchListProduct(currentPage);
           } else {
-            failToast.show();
+            alert("Delete failed");
           }
         } catch (error) {
           console.error("Error deleting product:", error);
@@ -194,4 +200,56 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error:", error);
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("create-img-speaker")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const imageInput = document.getElementById("file");
+      const file = imageInput.files[0];
+
+      if (file && !["image/png", "image/jpeg"].includes(file.type)) {
+        alert("Only PNG and JPG files are allowed.");
+        return;
+      }
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(
+          `https://cors-anywhere.herokuapp.com/https://tscproaudio.com/upload/n9-speakers`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: basicAuth,
+            },
+            body: formData,
+          }
+        );
+        const contentType = response.headers.get("Content-Type");
+
+        let result;
+        if (contentType && contentType.includes("application/json")) {
+          result = await response.json();
+        } else {
+          result = await response.text();
+        }
+        if (!response.ok) {
+          const errorData = await response.json();
+          failToast.show();
+          console.error("Error Details:", errorData);
+          throw new Error("Failed to create mixer.");
+        }
+
+        successToast.show();
+        console.log("Success:", result);
+      } catch (error) {
+        failToast.show();
+        console.error("Error:", error);
+      }
+    });
 });

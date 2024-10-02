@@ -5,15 +5,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const productId = urlParams.get("id");
 
   function getProductDetails() {
-    fetch(`${API_URL}/n9-speaker-series/${productId}`)
+    fetch(`${API_URL}/mixer/${productId}`)
       .then((response) => response.json())
       .then((product) => {
+        console.log(product);
         const catalogueProduct = document.querySelector(
           ".product-tab-catalogue"
         );
         const titleProduct = document.querySelector(".title-product");
         const imageProduct = document.querySelector(".picture-product");
         const breadCrumb = document.querySelector(".bread-crumb-name");
+        const detail = document.querySelector(".product_getcontent");
+        detail.innerHTML = `
+        <p>${product.description || `No description`}</p>
+        `;
 
         breadCrumb.innerHTML = `
           <strong><span>${product.modelMixer}</span></strong>
