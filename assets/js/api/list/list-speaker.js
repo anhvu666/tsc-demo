@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                   <a class="image_thumb" href="/tscshop/pages/detail-product/speaker-detail.html?id=${product.id}"
                                       title="${product.n9SpeakerSeriesName}">
                                       <img class="lazyload" width="200" height="200"
-                                          src="${product.n9SpeakerSeriesName}"
+                                          src="${product.imgId}"
                                           alt="${product.n9SpeakerSeriesName}">
                                   </a>
   

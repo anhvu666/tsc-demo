@@ -14,11 +14,6 @@
 
     <!-- Custom fonts for this template-->
     <link
-      href="/assets/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
@@ -28,7 +23,6 @@
     />
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet" />
-
     <link
       href="/assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
@@ -37,44 +31,6 @@
   </head>
 
   <body id="page-top">
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-      <div
-        class="toast toast-success"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <div class="rounded me-2 p-2 bg-success"></div>
-          <strong class="me-auto text-success">Done!</strong>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">Successfully</div>
-      </div>
-      <div
-        class="toast toast-fail"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <div class="rounded me-2 p-2 bg-danger"></div>
-          <strong class="me-auto text-danger">Failed!</strong>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">Unsuccessfully</div>
-      </div>
-    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -291,18 +247,17 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
+
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Amplifier</h1>
+              <h1 class="h3 mb-0 text-gray-800">Edit mixer</h1>
             </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                  Create amplifier
-                </h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit mixer</h6>
               </div>
               <div class="card-body">
                 <div class="text-danger mb-3">
@@ -314,49 +269,38 @@
                     - The image name must be the same as the model name
                   </p>
                 </div>
-                <form id="create-img-amplifier">
-                  <div class="row mb-3">
-                    <div class="col-sm-2">
-                      <label for="file" class="form-label">Upload Image:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="file"
-                        name="file"
-                        accept=".png, .jpg, .jpeg"
-                      />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12 text-end">
-                      <div id="responseMessage"></div>
-                      <button
-                        type="submit"
-                        class="btn btn-primary btn-up-image"
-                      >
-                        Add +
-                      </button>
-                    </div>
-                  </div>
-                </form>
-                <form id="create-amplifier-form">
+                <form id="edit-mixer-form">
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="model" class="form-label">Model:</label>
+                      <label for="modelMixer" class="form-label">Model:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="model"
+                        id="modelMixer"
+                        name="modelMixer"
                         placeholder="Enter"
-                        name="model"
                         required
                       />
                     </div>
                   </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="imgId" class="form-label">Image:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="imgId"
+                        name="imgId"
+                        placeholder="Enter"
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
                       <label for="description" class="form-label"
@@ -366,8 +310,8 @@
                     <div class="col-sm-10">
                       <textarea
                         class="form-control"
-                        id="description"
                         placeholder="Enter"
+                        id="description"
                         name="description"
                         rows="4"
                       ></textarea>
@@ -376,368 +320,145 @@
 
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower8OHM" class="form-label"
-                        >Stereo power 80 ohm:</label
+                      <label for="channel" class="form-label">Channel:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter"
+                        id="channel"
+                        name="channel"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="channelEQ" class="form-label"
+                        >Channel EQ:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower8OHM"
                         placeholder="Enter"
-                        name="stereoPower8OHM"
+                        id="channelEQ"
+                        name="channelEQ"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower4OHM" class="form-label"
-                        >Stereo power 40 ohm:</label
+                      <label for="aux" class="form-label">AUX:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter"
+                        id="AUX"
+                        name="AUX"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="return" class="form-label">Return:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter"
+                        id="returnMixer"
+                        name="returnMixer"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="effects" class="form-label">Effects:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="effects"
+                        placeholder="Enter"
+                        name="effects"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="mainOut" class="form-label">Main out:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter"
+                        id="mainOut"
+                        name="mainOut"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="groups" class="form-label">Groups:</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter"
+                        id="groupsMixer"
+                        name="groupsMixer"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3 mt-3">
+                    <div class="col-sm-2">
+                      <label for="phantomPower" class="form-label"
+                        >Phantom power:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower4OHM"
                         placeholder="Enter"
-                        name="stereoPower4OHM"
+                        id="phantomPower"
+                        name="phantomPower"
                       />
                     </div>
                   </div>
                   <div class="row mb-3 mt-3">
                     <div class="col-sm-2">
-                      <label for="stereoPower2OHM" class="form-label"
-                        >Stereo power 20 ohm:</label
+                      <label for="usbPlayer" class="form-label"
+                        >Usb player:</label
                       >
                     </div>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="stereoPower2OHM"
                         placeholder="Enter"
-                        name="stereoPower2OHM"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="btl8OHM" class="form-label"
-                        >BTL 80 ohm:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="btl8OHM"
-                        placeholder="Enter"
-                        name="btl8OHM"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="btl4OHM" class="form-label"
-                        >BTL 40 ohm:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="btl4OHM"
-                        placeholder="Enter"
-                        name="btl4OHM"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="frequencyResponse" class="form-label"
-                        >Frequency response:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="frequencyResponse"
-                        placeholder="Enter"
-                        name="frequencyResponse"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="thdPlus" class="form-label">THD+:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="thdPlus"
-                        placeholder="Enter"
-                        name="thdPlus"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="sSourceNRatio" class="form-label"
-                        >S/N Ratio:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="sSourceNRatio"
-                        placeholder="Enter"
-                        name="sSourceNRatio"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="slewRatio" class="form-label"
-                        >Slew Ratio:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="slewRatio"
-                        placeholder="Enter"
-                        name="slewRatio"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="dampingFactor" class="form-label"
-                        >Damping factor:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="dampingFactor"
-                        placeholder="Enter"
-                        name="dampingFactor"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="ourputCircuitry" class="form-label"
-                        >Output circuitry:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="ourputCircuitry"
-                        placeholder="Enter"
-                        name="ourputCircuitry"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="crossTalk" class="form-label"
-                        >Crosstalk:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="crossTalk"
-                        placeholder="Enter"
-                        name="crossTalk"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="inputImpedance" class="form-label"
-                        >Input impedance:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputImpedance"
-                        placeholder="Enter"
-                        name="inputImpedance"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="inputSensitivity" class="form-label"
-                        >Input sensitivity:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputSensitivity"
-                        placeholder="Enter"
-                        name="inputSensitivity"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="protect" class="form-label">Protect:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="protect"
-                        placeholder="Enter"
-                        name="protect"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="gWeight" class="form-label">Weight:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="gWeight"
-                        placeholder="Enter"
-                        name="gWeight"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="dimension" class="form-label"
-                        >Dimension:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="dimension"
-                        placeholder="Enter"
-                        name="dimension"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="packingSize" class="form-label"
-                        >Packing size:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="packingSize"
-                        placeholder="Enter"
-                        name="packingSize"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="gain" class="form-label">Gain:</label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="gain"
-                        placeholder="Enter"
-                        name="gain"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="optionalGian" class="form-label"
-                        >Optional Gain:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="optionalGian"
-                        placeholder="Enter"
-                        name="optionalGian"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="degreeOfSeparation" class="form-label"
-                        >Degree of separation:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="degreeOfSeparation"
-                        placeholder="Enter"
-                        name="degreeOfSeparation"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="dissipateHeat" class="form-label"
-                        >Dissipate heat:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="dissipateHeat"
-                        placeholder="Enter"
-                        name="dissipateHeat"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mb-3 mt-3">
-                    <div class="col-sm-2">
-                      <label for="appearanceVolume" class="form-label"
-                        >Appearance volume:</label
-                      >
-                    </div>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="appearanceVolume"
-                        placeholder="Enter"
-                        name="appearanceVolume"
+                        id="usbPlayer"
+                        name="usbPlayer"
                       />
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-sm-12 text-end">
-                      <button type="submit" class="btn btn-primary">Add</button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-submit-form"
+                      >
+                        Edit
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -812,6 +533,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
-    <script src="/assets/js/api/admin/amplifier.js"></script>
+    <script src="/assets/js/api/edit/mixer-edit.js"></script>
   </body>
 </html>

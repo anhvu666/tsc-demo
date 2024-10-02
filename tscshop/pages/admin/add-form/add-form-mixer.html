@@ -298,12 +298,19 @@
                 <h6 class="m-0 font-weight-bold text-primary">Create mixer</h6>
               </div>
               <div class="card-body">
+                <div class="text-danger mb-3">
+                  Note:
+                  <p class="m-0">
+                    - You must add images first and then add product information
+                  </p>
+                  <p class="m-0">
+                    - The image name must be the same as the model name
+                  </p>
+                </div>
                 <form id="create-img-mixer">
                   <div class="row mb-3">
                     <div class="col-sm-2">
-                      <label for="imgId" class="form-label"
-                        >Upload Image:</label
-                      >
+                      <label for="file" class="form-label">Upload Image:</label>
                     </div>
                     <div class="col-sm-10">
                       <input
@@ -318,7 +325,10 @@
                   <div class="row">
                     <div class="col-sm-12 text-end">
                       <div id="responseMessage"></div>
-                      <button type="submit" class="btn btn-primary">
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-up-image"
+                      >
                         Add +
                       </button>
                     </div>
@@ -336,6 +346,7 @@
                         id="modelMixer"
                         name="modelMixer"
                         placeholder="Enter"
+                        required
                       />
                     </div>
                   </div>
@@ -492,7 +503,6 @@
 
                   <div class="row">
                     <div class="col-sm-12 text-end">
-                      <div id="responseMessage"></div>
                       <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                   </div>
