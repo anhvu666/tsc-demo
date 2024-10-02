@@ -12,25 +12,6 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const token = localStorage.getItem('token');
-  
-        if (!token) {
-          alert('Please login to access');
-          window.location.href = 'login.html';
-        }
-
-        function logout() {
-          localStorage.removeItem('token');
-          window.location.href = 'login.html';
-        }
-
-        document.getElementById('logoutBtn').addEventListener('click', logout);
-  
-      });
-    </script>
-
     <!-- Custom fonts for this template-->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -239,8 +220,17 @@
                       Douglas McGee
                     </span>
                   </button>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                    <Button class="dropdown-item" id="logoutBtn" data-toggle="modal" data-target="#logoutModal">Logout</Button>
+                  <div
+                    class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  >
+                    <button
+                      class="dropdown-item"
+                      id="logoutBtn"
+                      data-toggle="modal"
+                      data-target="#logoutModal"
+                    >
+                      Logout
+                    </button>
                   </div>
                 </div>
               </li>
@@ -369,5 +359,22 @@
     <!-- Custom scripts for all pages-->
     <script src="/assets/js/sb-admin-2.js"></script>
     <script src="/assets/js/api/admin/dashboard.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          alert("Please login to access");
+          window.location.href = "login.html";
+        }
+
+        function logout() {
+          localStorage.removeItem("token");
+          window.location.href = "login.html";
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", logout);
+      });
+    </script>
   </body>
 </html>
