@@ -2,9 +2,7 @@ const API_URL = "https://tscproaudio.com/manager";
 const successToast = new bootstrap.Toast(".toast-success");
 const failToast = new bootstrap.Toast(".toast-fail");
 
-const username = "admin";
-const password = "123456@";
-const basicAuth = "Basic " + btoa(username + ":" + password);
+const basicAuth = localStorage.getItem("basicAuth");
 
 document.addEventListener("DOMContentLoaded", function () {
   const listProduct = document.querySelector(".dataTable tbody");
@@ -55,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>
               <div>
                 <a 
-                href="/tscshop/pages/admin/edit-from/speaker-edit.html?id=${
+                href="/tscshop/pages/admin/edit-form/speaker-edit.html?id=${
                   product.id
                 }" 
                 type="button" class="btn btn-success btn-sm">

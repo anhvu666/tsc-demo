@@ -2,9 +2,7 @@ const API_URL = "https://tscproaudio.com/manager";
 const urlParams = new URLSearchParams(window.location.search);
 const mixerId = urlParams.get("id");
 const getNumberId = parseInt(mixerId);
-const username = "admin";
-const password = "123456@";
-const basicAuth = "Basic " + btoa(username + ":" + password);
+const basicAuth = localStorage.getItem("basicAuth");
 
 document.addEventListener("DOMContentLoaded", function () {
   function productDetails() {

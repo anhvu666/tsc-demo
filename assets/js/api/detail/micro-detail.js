@@ -1,13 +1,6 @@
 const API_URL = "https://tscproaudio.com/manager";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const username = "admin";
-  const password = "123456@";
-  const headers = new Headers();
-  const encodedCredentials = btoa(`${username}:${password}`);
-
-  headers.append("Authorization", "Basic " + encodedCredentials);
-
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
