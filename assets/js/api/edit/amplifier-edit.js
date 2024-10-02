@@ -38,6 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("dimension").value = product.dimension || "";
         document.getElementById("packingSize").value =
           product.packingSize || "";
+        document.getElementById("gain").value = product.gain || "";
+        document.getElementById("optionalGian").value =
+          product.optionalGian || "";
+        document.getElementById("degreeOfSeparation").value =
+          product.degreeOfSeparation || "";
+        document.getElementById("dissipateHeat").value =
+          product.dissipateHeat || "";
+        document.getElementById("appearanceVolume").value =
+          product.appearanceVolume || "";
       })
       .catch((error) => {
         console.error("Error fetching product details:", error);

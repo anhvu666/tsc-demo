@@ -8,6 +8,8 @@ const basicAuth = localStorage.getItem("basicAuth");
 document.addEventListener("DOMContentLoaded", function () {
   const listProduct = document.querySelector(".dataTable tbody");
   const pagination = document.getElementById("list-pagination");
+  const searchButton = document.getElementById("searchMixerBtn");
+  const searchInput = document.getElementById("searchMixer");
 
   let currentPage = 1;
   const productsPerPage = 10;
@@ -77,6 +79,71 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Error fetching products:", error);
     }
   }
+  async function searchProducts(keyword) {
+    listProduct.innerHTML = `<tr><td colspan="4" class="text-center">Loading</td></tr>`;
+    try {
+      const res = await fetch(`${API_URL}/mixer/find-by-keyword/${keyword}`);
+      const data = await res.json();
+
+      const listMicro = data.content || data; // Tùy thuộc vào cấu trúc response
+      listProduct.innerHTML = "";
+
+      if (listMicro.length === 0) {
+        listProduct.innerHTML =
+          '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
+        return;
+      }
+
+      listMicro.forEach((product, index) => {
+        const list = `
+          <tr data-product-id="${product.id}">
+            <th class="align-middle">${index + 1}</th>
+            <td class="align-middle">${product.modelMixer}</td>
+            <td class="align-middle">
+            <img width="100" height="40" src="${product.imgId}" alt="${
+          product.modelMixer
+        }" />
+            </td>
+            <td class="text-truncate align-middle" style="max-width: 200px">
+              <div class="d-inline-block text-truncate" style="max-width: 100%">
+                ${product.description || "No description available"}
+              </div>
+            </td>
+            <td>
+              <div>
+                <a 
+                href="/tscshop/pages/admin/edit-form/mixer-edit.html?id=${
+                  product.id
+                }" 
+                type="button" class="btn btn-success btn-sm">
+                Edit
+                </a>
+                <button type="button" class="btn btn-danger btn-sm deleteButton" data-bs-toggle="popover" data-bs-html="true"  
+                    data-product-id="${product.id}">
+                Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+        listProduct.insertAdjacentHTML("beforeend", list);
+      });
+
+      deleteProduct();
+    } catch (error) {
+      listProduct.innerHTML =
+        '<tr><td colspan="4" class="text-center">Error fetching products. Please try again later.</td></tr>';
+      console.log("Error searching products:", error);
+    }
+  }
+
+  searchButton.addEventListener("click", function () {
+    const keyword = searchInput.value;
+    console.log("keyword", keyword);
+    if (keyword) {
+      searchProducts(keyword);
+    }
+  });
 
   function displayPagination(totalPages, currentPage) {
     if (totalPages <= 1) {
@@ -153,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
   fetchListProduct(currentPage);
 });
 
