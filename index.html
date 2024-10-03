@@ -59,19 +59,6 @@
       src="../bizweb.dktcdn.net/100/039/691/themes/895040/assets/lazy8331.js?1676344656178"
       type="text/javascript"
     ></script>
-    <script>
-      $(document).ready(function ($) {
-        awe_lazyloadImage();
-      });
-      function awe_lazyloadImage() {
-        var ll = new LazyLoad({
-          elements_selector: ".lazyload",
-          load_delay: 100,
-          threshold: 0,
-        });
-      }
-      window.awe_lazyloadImage = awe_lazyloadImage;
-    </script>
     <link
       rel="preload"
       as="script"
@@ -170,7 +157,7 @@
                       width="150"
                       height="40"
                       src="../bizweb.dktcdn.net/100/039/691/themes/895040/assets/logo.png?1676344656178"
-                      alt="logo betashop-theme"
+                      alt="logo TSC Shop"
                     />
                   </a>
                 </div>
@@ -272,11 +259,6 @@
                   <div class="swiper-slide">
                     <a href="#" class="clearfix" title="Slider 1">
                       <picture>
-                        <!-- <source media="(max-width: 480px)" srcset="../bizweb.dktcdn.net/thumb/large/100/039/691/themes/895040/assets/slider_18331.jpg?1676344656178">
-									<source media="(min-width: 481px) and (max-width: 600px)" srcset="../bizweb.dktcdn.net/thumb/grande/100/039/691/themes/895040/assets/slider_18331.jpg?1676344656178">
-									<source media="(min-width: 601px) and (max-width: 1023px)" srcset="../bizweb.dktcdn.net/thumb/1024x1024/100/039/691/themes/895040/assets/slider_18331.jpg?1676344656178">
-									<source media="(min-width: 1024px) and (max-width: 1199px)" srcset="../bizweb.dktcdn.net/thumb/1024x1024/100/039/691/themes/895040/assets/slider_18331.jpg?1676344656178">
-									<source media="(min-width: 1200px)" srcset="../bizweb.dktcdn.net/thumb/2048x2048/100/039/691/themes/895040/assets/slider_18331.jpg?1676344656178"> -->
                         <img
                           width="870"
                           height="420"
@@ -304,14 +286,6 @@
           </div>
         </div>
       </section>
-      <script>
-        var swiper = new Swiper(".home-slider", {
-          autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
-          },
-        });
-      </script>
     </section>
     <section class="awe-section-4">
       <section class="section_product_sale">
@@ -330,7 +304,7 @@
               </svg>
               <a
                 href="/tscshop/pages/list-product/all-speaker.html"
-                title="Product 3"
+                title="Speaker"
                 >Speaker</a
               >
             </h2>
@@ -361,7 +335,7 @@
               </svg>
               <a
                 href="/tscshop/pages/list-product/all-amplifier.html"
-                title="Product 3"
+                title="Amplifier"
                 >Amplifier</a
               >
             </h2>
@@ -390,15 +364,45 @@
                   d="M501.6 4.186c-7.594-5.156-17.41-5.594-25.44-1.063L12.12 267.1C4.184 271.7-.5037 280.3 .0431 289.4c.5469 9.125 6.234 17.16 14.66 20.69l153.3 64.38v113.5c0 8.781 4.797 16.84 12.5 21.06C184.1 511 188 512 191.1 512c4.516 0 9.038-1.281 12.99-3.812l111.2-71.46l98.56 41.4c2.984 1.25 6.141 1.875 9.297 1.875c4.078 0 8.141-1.031 11.78-3.094c6.453-3.625 10.88-10.06 11.95-17.38l64-432C513.1 18.44 509.1 9.373 501.6 4.186zM369.3 119.2l-187.1 208.9L78.23 284.7L369.3 119.2zM215.1 444v-49.36l46.45 19.51L215.1 444zM404.8 421.9l-176.6-74.19l224.6-249.5L404.8 421.9z"
                 />
               </svg>
-              <a
-                href="/tscshop/pages/list-product/all-micro.html"
-                title="Product 3"
+              <a href="/tscshop/pages/list-product/all-micro.html" title="Micro"
                 >Micro</a
               >
             </h2>
           </div>
           <div class="section-product">
             <div class="row list-series-micro list-section-product">
+              <div class="loading-message text-center fs-2">Loading...</div>
+              <!--list series-->
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section class="awe-section-4">
+      <section class="section_product_sale">
+        <div class="container">
+          <div class="title_module_main">
+            <h2 class="h2">
+              <svg
+                width="12"
+                height="12"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M501.6 4.186c-7.594-5.156-17.41-5.594-25.44-1.063L12.12 267.1C4.184 271.7-.5037 280.3 .0431 289.4c.5469 9.125 6.234 17.16 14.66 20.69l153.3 64.38v113.5c0 8.781 4.797 16.84 12.5 21.06C184.1 511 188 512 191.1 512c4.516 0 9.038-1.281 12.99-3.812l111.2-71.46l98.56 41.4c2.984 1.25 6.141 1.875 9.297 1.875c4.078 0 8.141-1.031 11.78-3.094c6.453-3.625 10.88-10.06 11.95-17.38l64-432C513.1 18.44 509.1 9.373 501.6 4.186zM369.3 119.2l-187.1 208.9L78.23 284.7L369.3 119.2zM215.1 444v-49.36l46.45 19.51L215.1 444zM404.8 421.9l-176.6-74.19l224.6-249.5L404.8 421.9z"
+                />
+              </svg>
+              <a
+                href="/tscshop/pages/list-product/all-mixer.html"
+                title="Mixer"
+              >
+                Mixer
+              </a>
+            </h2>
+          </div>
+          <div class="section-product">
+            <div class="row list-series-mixer list-section-product">
               <div class="loading-message text-center fs-2">Loading...</div>
               <!--list series-->
             </div>
@@ -431,7 +435,7 @@
                   <a
                     class="twitter"
                     href="tel:#"
-                    title="Theo dõi betashop-theme trên Twitter"
+                    title="Theo dõi TSShop trên Twitter"
                   >
                     <svg
                       width="12"
@@ -452,7 +456,7 @@
                     href="#"
                     target="_blank"
                     aria-label="Instagram"
-                    title="Theo dõi betashop-theme trên Instagram"
+                    title="Theo dõi TSC Shop trên Instagram"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -483,7 +487,7 @@
                     href="#"
                     target="_blank"
                     aria-label="Facebook"
-                    title="Theo dõi betashop-theme trên Facebook"
+                    title="Theo dõi TSC Shop trên Facebook"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -506,7 +510,7 @@
                     href="#"
                     target="_blank"
                     aria-label="Youtube"
-                    title="Theo dõi betashop-theme trên youtube"
+                    title="Theo dõi TSC Shop trên youtube"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
