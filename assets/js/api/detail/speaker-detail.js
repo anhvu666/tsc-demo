@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(`${API_URL}/n9-speaker-series/${productId}`)
       .then((response) => response.json())
       .then((product) => {
-        console.log("test", product);
         const catalogueProduct = document.querySelector(
           ".product-tab-catalogue"
         );

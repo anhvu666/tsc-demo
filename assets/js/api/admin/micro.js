@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchButton.addEventListener("click", function () {
     const keyword = searchInput.value;
-    console.log("keyword", keyword);
     if (keyword) {
       searchProducts(keyword);
     }
