@@ -22,18 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       const data = await res.json();
 
-      const listMicro = data.content;
+      const listMixer = data.content;
       const totalProducts = data.total;
       listProduct.innerHTML = "";
 
-      if (listMicro.length === 0) {
+      if (listMixer.length === 0) {
         listProduct.innerHTML =
           '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
         pagination.style.display = "none";
         return;
       }
 
-      listMicro.forEach((product, index) => {
+      listMixer.forEach((product, index) => {
         const list = `
           <tr data-product-id="${product.id}">
             <th class="align-middle">${
@@ -85,16 +85,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const res = await fetch(`${API_URL}/mixer/find-by-keyword/${keyword}`);
       const data = await res.json();
 
-      const listMicro = data.content || data; // Tùy thuộc vào cấu trúc response
+      const listMixer = data.content || data;
       listProduct.innerHTML = "";
 
-      if (listMicro.length === 0) {
+      if (listMixer.length === 0) {
         listProduct.innerHTML =
           '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
         return;
       }
 
-      listMicro.forEach((product, index) => {
+      listMixer.forEach((product, index) => {
         const list = `
           <tr data-product-id="${product.id}">
             <th class="align-middle">${index + 1}</th>
@@ -139,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchButton.addEventListener("click", function () {
     const keyword = searchInput.value;
-    console.log("keyword", keyword);
     if (keyword) {
       searchProducts(keyword);
     }

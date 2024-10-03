@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         `${API_URL}/speakers-series/all?page=0&size=5`
       );
       const data = await response.json();
-      console.log("speaker", data);
       const products = data.content;
       if (products.length === 0) {
         listSeriesSpeaker.innerHTML =

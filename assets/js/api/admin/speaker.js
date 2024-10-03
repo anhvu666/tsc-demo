@@ -23,19 +23,18 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       const data = await res.json();
 
-      console.log("mode", data);
-      const listMicro = data.content;
+      const listSpeaker = data.content;
       const totalProducts = data.total;
       listProduct.innerHTML = "";
 
-      if (listMicro.length === 0) {
+      if (listSpeaker.length === 0) {
         listProduct.innerHTML =
           '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
         pagination.style.display = "none";
         return;
       }
 
-      listMicro.forEach((product, index) => {
+      listSpeaker.forEach((product, index) => {
         const list = `
           <tr data-product-id="${product.id}">
             <th class="align-middle">${
@@ -89,16 +88,16 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       const data = await res.json();
 
-      const listMicro = data.content || data;
+      const listSpeaker = data.content || data;
       listProduct.innerHTML = "";
 
-      if (listMicro.length === 0) {
+      if (listSpeaker.length === 0) {
         listProduct.innerHTML =
           '<tr style="height: 200px"><td colspan="4" style="padding-top:55px" class="text-center fs-4">No data<img width="100" height="100" src="/public/images/svg/box.svg" alt="box-icon" /></td></tr>';
         return;
       }
 
-      listMicro.forEach((product, index) => {
+      listSpeaker.forEach((product, index) => {
         const list = `
           <tr data-product-id="${product.id}">
             <th class="align-middle">${index + 1}</th>
@@ -143,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchButton.addEventListener("click", function () {
     const keyword = searchInput.value;
-    console.log("keyword", keyword);
     if (keyword) {
       searchProducts(keyword);
     }
@@ -261,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const result = await response.json();
       successToast.show();
-      console.log(result);
     } catch (error) {
       failToast.show();
       console.error("Error:", error);

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="/assets/css/sb-admin-2.css" rel="stylesheet" />
+    <link
+      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="/tscshop/pages/admin/admin-index.html"
+        >
+          <div class="sidebar-brand-icon rotate-n-15"></div>
+          <div class="sidebar-brand-text mx-3">Admin</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/tscshop/pages/admin/admin-index.html">
+            <span>Dashboard</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="/tscshop/pages/admin/micro-list.html"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>Micro</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="/tscshop/pages/admin/amplifier-list.html"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>Amplifier</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="/tscshop/pages/admin/speaker-list.html"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>Speaker</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="/tscshop/pages/admin/mixer-list.html"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>Mixer</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="/tscshop/pages/admin/series/series-product.html"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>Series</span>
+          </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            ></button>
+
+            <!-- Topbar Search -->
+            <form
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 small"
+                  placeholder="Search for..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  id="searchMicro"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="searchMicroBtn"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item no-arrow">
+                <div class="dropdown me-5">
+                  <button
+                    class="nav-link dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                      Admin
+                    </span>
+                  </button>
+                  <div
+                    class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  >
+                    <button
+                      class="dropdown-item"
+                      id="logoutBtn"
+                      data-toggle="modal"
+                      data-target="#logoutModal"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Series product</h1>
+            </div>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div
+                class="card-header py-3 d-flex align-items-center justify-content-between"
+              >
+                <h6 class="m-0 font-weight-bold text-primary">Create series</h6>
+              </div>
+              <div class="card-body">
+                <div class="">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="micro-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#micro"
+                        type="button"
+                        role="tab"
+                        aria-controls="micro"
+                        aria-selected="true"
+                      >
+                        Micro series
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="amplifier-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#amplifier"
+                        type="button"
+                        role="tab"
+                        aria-controls="amplifier"
+                        aria-selected="false"
+                      >
+                        Amplifier series
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="speaker-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#speaker"
+                        type="button"
+                        role="tab"
+                        aria-controls="speaker"
+                        aria-selected="false"
+                      >
+                        Speaker series
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="mixer-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#mixer"
+                        type="button"
+                        role="tab"
+                        aria-controls="mixer"
+                        aria-selected="false"
+                      >
+                        Mixer series
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Tabs Content -->
+                  <div class="tab-content" id="myTabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="micro"
+                      role="tabpanel"
+                      aria-labelledby="micro-tab"
+                    >
+                      <div class="mt-3">
+                        <!-- <form id="create-img-mixer">
+                          <div class="row mb-3">
+                            <div class="col-sm-2">
+                              <label for="file" class="form-label"
+                                >Upload Image:</label
+                              >
+                            </div>
+                            <div class="col-sm-10">
+                              <input
+                                type="file"
+                                class="form-control"
+                                id="file"
+                                name="file"
+                                accept=".png, .jpg, .jpeg"
+                              />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-12 text-end">
+                              <button
+                                type="submit"
+                                class="btn btn-primary btn-up-image"
+                              >
+                                Add +
+                              </button>
+                            </div>
+                          </div>
+                        </form> -->
+                        <form id="create-series-micro">
+                          <div class="row mb-3 mt-3">
+                            <div class="col-sm-2">
+                              <label for="seriesNameMicro" class="form-label"
+                                >Series name:</label
+                              >
+                            </div>
+                            <div class="col-sm-10">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="seriesNameMicro"
+                                placeholder="Enter"
+                                name="seriesNameMicro"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-12 text-end">
+                              <button
+                                type="submit"
+                                class="btn btn-primary btn-series-micro"
+                              >
+                                Add +
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="amplifier"
+                      role="tabpanel"
+                      aria-labelledby="amplifier-tab"
+                    >
+                      <form id="create-series-amplifier">
+                        <div class="row mb-3 mt-3">
+                          <div class="col-sm-2">
+                            <label for="seriesNameAmplifier" class="form-label"
+                              >Series name:</label
+                            >
+                          </div>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="seriesNameAmplifier"
+                              placeholder="Enter"
+                              name="seriesNameAmplifier"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 text-end">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-series-amplifier"
+                            >
+                              Add +
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="speaker"
+                      role="tabpanel"
+                      aria-labelledby="speaker-tab"
+                    >
+                      <form id="create-series-speaker">
+                        <div class="row mb-3 mt-3">
+                          <div class="col-sm-2">
+                            <label for="seriesNameSpeaker" class="form-label"
+                              >Series name:</label
+                            >
+                          </div>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="seriesNameSpeaker"
+                              placeholder="Enter"
+                              name="seriesNameSpeaker"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 text-end">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-series-speaker"
+                            >
+                              Add +
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="mixer"
+                      role="tabpanel"
+                      aria-labelledby="mixer-tab"
+                    >
+                      <form id="create-series-mixer">
+                        <div class="row mb-3 mt-3">
+                          <div class="col-sm-2">
+                            <label for="seriesNameMixer" class="form-label"
+                              >Series name:</label
+                            >
+                          </div>
+                          <div class="col-sm-10">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="seriesNameMixer"
+                              placeholder="Enter"
+                              name="seriesNameMixer"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 text-end">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-series-mixer"
+                            >
+                              Add +
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <!-- <span>Copyright &copy; Your Website 2021</span> -->
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/assets/js/sb-admin-2.js"></script>
+    <script src="/assets/js/api/admin/create-series.js"></script>
+    <script defer src="/assets/js/api/login.js"></script>
+  </body>
+</html>
